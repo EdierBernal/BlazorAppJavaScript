@@ -3,22 +3,22 @@
 
 <h3>BlazorJS Component</h3>
 
-<div class="row mt-4">
-    <div class="col-4">
+<div class="container">
+    <div class="row">
         <button class="btn btn-secondary" @onclick="() => DemoConfirmation(messageConfirmation)">Demo confirm button</button>
     </div>
+    <br />
+    <div class="row">
+        @if (resultConfirm)
+        {
+            <p>Confirmation success!!</p>
+        }
+        else
+        {
+            <p>Confirmation canceled!!</p>
+        }
+    </div>
 </div>
-
-<div class="row">
-    @if (resultConfirm)
-    {
-        <p>Confirmation success!!</p>
-    }else
-    {
-        <p>Confirmation canceled!!</p>
-    }
-</div>
-
 @code {
     private string messageConfirmation = "Are you sure to click me?";
     private bool resultConfirm { get; set; }
