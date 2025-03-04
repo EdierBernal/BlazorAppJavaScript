@@ -1,0 +1,30 @@
+﻿@page "/blazor-js"
+@inject IJSRuntime JsRuntime
+
+<h3>BlazorJS Component</h3>
+
+<div class="row mt-4">
+    <div class="col-4">
+        <button class="btn btn-secondary" @onclick="() => DemoConfirmation(messageConfirmation)">Demo confirm button</button>
+    </div>
+</div>
+
+<div class="row">
+    @if (resultConfirm)
+    {
+        <p>Confirmation success!!</p>
+    }else
+    {
+        <p>Confirmation canceled!!</p>
+    }
+</div>
+
+@code {
+    private string messageConfirmation = "Are you sure to click me?";
+    private bool resultConfirm { get; set; }
+
+    private async Task DemoConfirmation(string message)
+    {
+        resultConfirm = await JsRuntime.InvokeAsync<bool>("confirm", message);
+    }
+}

@@ -1,0 +1,30 @@
+﻿@page "/blazor-toastr"
+@inject IJSRuntime JsRuntime
+
+<h3>Blazor Toastr Component</h3>
+<div class="container; padding: 3px">
+    <div class="row">
+        <button class="btn btn-success" @onclick="ShowSuccess">Show Success</button>
+        <button class="btn btn-danger " @onclick="ShowDanger">Show Danger</button>
+        <button class="btn btn-warning" @onclick="ShowWarning">Show Warning</button>
+        <button class="btn btn-info " @onclick="ShowInfo">Show Info</button>
+    </div>
+</div>
+@code {
+    private async Task ShowSuccess()
+    {
+        await JsRuntime.InvokeVoidAsync("ShowToastr", "success", "process with success");
+    }
+    private async Task ShowDanger()
+    {
+        await JsRuntime.InvokeVoidAsync("ShowToastr", "error", "process with danger");
+    }
+    private async Task ShowWarning()
+    {
+        await JsRuntime.InvokeVoidAsync("ShowToastr", "warning", "process with warning");
+    }
+    private async Task ShowInfo()
+    {
+        await JsRuntime.InvokeVoidAsync("ShowToastr", "info", "process with info");
+    }
+}
