@@ -1,10 +1,13 @@
 using BlazorAppJavaScript.Components;
+using BlazorAppJavaScript.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<SweetAlertService>();
 
 var app = builder.Build();
 

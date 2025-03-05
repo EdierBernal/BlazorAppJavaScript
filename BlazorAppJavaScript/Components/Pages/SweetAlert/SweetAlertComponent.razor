@@ -1,0 +1,31 @@
+﻿@page "/sweet-alert"
+<h3>Sweet Alert Component</h3>
+@inject SweetAlertService SweetAlertService
+
+<div class="container">
+    <div class="row">
+        <button class="btn btn-success" @onclick="ShowSimpleAlert">Show Simple Alert</button>
+        <button class="btn btn-warning" @onclick="ShowConfirmationAlert">Show Confirmation Alert</button>
+    </div>
+</div>
+
+@code {
+    bool confirmed = false;
+
+    private async Task ShowSimpleAlert()
+    {
+        await SweetAlertService.ShowAlert("Hello", "This is a simple alert", "success");
+    }
+    private async Task ShowConfirmationAlert()
+    {
+       confirmed  = await SweetAlertService.ShowConfirmation("Are yoy sure?!", "This is a confirmation alert");
+
+        if (confirmed)
+        {
+            await SweetAlertService.ShowAlert("Confirmed", "You has acepted", "success");
+        }else
+        {
+            await SweetAlertService.ShowAlert("Canceled", "You has canceled", "error");
+        }
+    }
+}

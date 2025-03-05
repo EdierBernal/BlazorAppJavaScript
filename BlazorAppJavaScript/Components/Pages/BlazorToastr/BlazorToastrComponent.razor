@@ -1,5 +1,6 @@
 ﻿@page "/blazor-toastr"
-@inject IJSRuntime JsRuntime
+
+@inject IJSRuntime JSRuntime
 
 <h3>Blazor Toastr Component</h3>
 <div class="container; padding: 3px">
@@ -13,18 +14,18 @@
 @code {
     private async Task ShowSuccess()
     {
-        await JsRuntime.InvokeVoidAsync("ShowToastr", "success", "process with success");
+        await JSRuntime.ToastrSuccess("process with success");
     }
     private async Task ShowDanger()
     {
-        await JsRuntime.InvokeVoidAsync("ShowToastr", "error", "process with danger");
+        await JSRuntime.ToastrDanger("process with danger");
     }
     private async Task ShowWarning()
     {
-        await JsRuntime.InvokeVoidAsync("ShowToastr", "warning", "process with warning");
+        await JSRuntime.ToastrWarning("process with warning");
     }
     private async Task ShowInfo()
     {
-        await JsRuntime.InvokeVoidAsync("ShowToastr", "info", "process with info");
+        await JSRuntime.ToastrInfo("process with info");
     }
 }
